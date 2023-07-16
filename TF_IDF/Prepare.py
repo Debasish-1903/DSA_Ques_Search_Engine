@@ -22,6 +22,8 @@ for i in range(1,2201):
 
     doc=""
     with open(file_path,"r",encoding="utf-8",errors="ignore")as f:
+     
+     
      lines=f.readlines()
 
 

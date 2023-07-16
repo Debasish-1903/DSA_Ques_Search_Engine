@@ -25,7 +25,7 @@ def load_document():
 def load_inverted_index():
     inverted_index = {}
     with open('inverted_index.txt', 'r') as f:
-        inverted_index_terms = f.readlines()
+         inverted_index_terms = f.readlines()
 
     for row_num in range(0,len(inverted_index_terms),2):
         term = inverted_index_terms[row_num].strip()
