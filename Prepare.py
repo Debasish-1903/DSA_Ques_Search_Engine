@@ -38,7 +38,7 @@ for i in range(1,2201):
 
     # adding heading of the ith question
 
-head_path=os.path.join(Qdata_folder,"index.txt")
+head_path="Leetcode question scrapper/Qdata/index.txt"
 
 with open(head_path,"r",encoding="utf-8",errors="ignore") as f:
      headings=f.readlines()
@@ -55,6 +55,7 @@ for (i,heading) in enumerate(headings,0):
        heading=' '.join(words[1:])
        # Now adding the remainging words in heading to the respective ques's body
        all_lines[i]+=heading
+
 
 
 
@@ -97,21 +98,21 @@ vocab = dict( sorted(vocab.items(), key = lambda item : item[1], reverse = True)
 
 
 
-print('Number of documents:', len(documents))
-print('Size of vocab:', len(vocab))
+#print('Number of documents:', len(documents))
+#print('Size of vocab:', len(vocab))
 print('Sample document:', documents[0])
 
 # Print the vocab dictionary using error handling for encoding issues
-for key, value in vocab.items():
-    try:
-        print(key, value)
-    except UnicodeEncodeError:
-        print(key.encode(sys.stdout.encoding, errors='ignore').decode(sys.stdout.encoding), value)
+#for key, value in vocab.items():
+  #  try:
+   #     print(key, value)
+   # except UnicodeEncodeError:
+   #     print(key.encode(sys.stdout.encoding, errors='ignore').decode(sys.stdout.encoding), value)
 
 
 # keys of vocab thus is a set of distinct words across all docs
 #save them in vocab file
-with open("TF_IDF/vocab.txt","w",encoding="utf-8",errors="ignore")as f:
+with open("vocab.txt","w",encoding="utf-8",errors="ignore")as f:
     for key in vocab.keys():
         f.write("%s\n"%key)
 
@@ -119,13 +120,13 @@ with open("TF_IDF/vocab.txt","w",encoding="utf-8",errors="ignore")as f:
 
 
 #save the idf valuse
-with open("TF_IDF/idf_values.txt","w",encoding="utf-8",errors="ignore")as f:
+with open("idf_values.txt","w",encoding="utf-8",errors="ignore")as f:
     for key in vocab.keys():
         f.write("%s\n"%vocab[key])
 
 
 #save the documents(lists of words for each doc) 
-with open("TF_IDF/documents.txt", "w", encoding = 'utf-8', errors = "ignore") as f:
+with open("documents.txt", "w", encoding = 'utf-8', errors = "ignore") as f:
     for doc in documents:
              f.write("%s\n" % doc)
 
@@ -141,7 +142,7 @@ for (index,doc)in enumerate(documents,start=1):
 
 
 #save the inverted index in a file 
-with open("TF_IDF/inverted_index.txt","w",encoding="utf-8",errors="ignore")as f:
+with open("inverted_index.txt","w",encoding="utf-8",errors="ignore")as f:
      for key in inverted_index.keys():
           f.write("%s\n"%key) 
 
