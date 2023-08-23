@@ -41,7 +41,7 @@ def load_inverted_index():
 
 def load_linkes_of_ques():
     
-    with open("Leetcode question scrapper/Qdata/Qindex.txt","r")as f:
+    with open("Leetcode question scrapper/Qindex.txt","r")as f:
        # links = [line.rstrip() for line in f.readlines()] # Use strip() to remove newline characters
         links=f.readlines()
 
@@ -51,7 +51,7 @@ def load_linkes_of_ques():
     return links 
 
 def load_headings():
-    with open("Leetcode question scrapper/Qdata/index.txt","r", encoding='utf-8', errors = "ignore") as f:
+    with open("Leetcode question scrapper/index.txt","r", encoding='utf-8', errors = "ignore") as f:
         lines = f.readlines()
 
     headings = []

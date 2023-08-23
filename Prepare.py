@@ -11,7 +11,7 @@ import os
 import re
 
 
-Qdata_folder="Leetcode question scrapper/Qdata"
+Qdata_folder="Leetcode question scrapper"
 target_str="Example 1:"
 
 all_lines=[]
@@ -38,7 +38,7 @@ for i in range(1,2201):
 
     # adding heading of the ith question
 
-head_path="Leetcode question scrapper/Qdata/index.txt"
+head_path="Leetcode question scrapper/index.txt"
 
 with open(head_path,"r",encoding="utf-8",errors="ignore") as f:
      headings=f.readlines()
