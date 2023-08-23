@@ -42,9 +42,13 @@ def load_inverted_index():
 def load_linkes_of_ques():
     
     with open("Leetcode question scrapper/Qdata/Qindex.txt","r")as f:
+       # links = [line.rstrip() for line in f.readlines()] # Use strip() to remove newline characters
         links=f.readlines()
 
-    return links  
+    #for i in range(len(links)):
+       # links[i] = links[i].strip('\n')
+
+    return links 
 
 def load_headings():
     with open("Leetcode question scrapper/Qdata/index.txt","r", encoding='utf-8', errors = "ignore") as f:
@@ -57,7 +61,7 @@ def load_headings():
 
         headings.append(heading)
 
-    print(headings)    
+   # print(headings)    
 
     return headings
 
@@ -72,8 +76,10 @@ inverted_index=load_inverted_index()
 Qlink=load_linkes_of_ques()
 headings = load_headings()
 
+print(Qlink)
 
 
+# returns a dict with key : doc index, value : Normalized term frequency for this doc
 def get_tf_dictionary(term):
     tf_dictionary={}
     if term in inverted_index:
@@ -134,47 +140,39 @@ def calculate_sorted_order_of_documents(q_terms):
         count = 0
         for doc_index in potential_docs:
             q_Links.append([potential_docs[doc_index], 
-                            Qlink[int(doc_index) - 1], 
-                            headings[int(doc_index) - 1]])
+                            Qlink[int(doc_index)-1], 
+                            headings[int(doc_index)-1]])
             count += 1
             if(count > 20):
                 break
             
-    #q_Links = sorted(q_Links, key =lambda item : item[0], reverse = True)
-    #q_Links = q_Links[:20]
+    q_Links = sorted(q_Links, key =lambda item : item[0], reverse = True)
+    q_Links = q_Links[:20]
 
     ans = []        # [link, heading]
     for link in q_Links:
         ans.append([link[1], link[2]])
 
     return ans
-    #ans = []
-    #for index, (score, link, heading) in enumerate(q_Links, 1):
-      #  ans.append([f"{index}. <a href='{link}' target='_blank'>{heading}</a>"])
-
-  #  return ans
+   
 
 
 
 
 
-#query = input('Enter your query: ')
-#query_terms = [term.lower() for term in query.strip().split()]
-#calculate_sorted_order_of_documents(query_terms)
+
 
 # Use of Flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'debasish-das'
 
-# Search Form for user to input the query
+
+
 class Search_Form(FlaskForm):
     search = StringField("Enter your search terms: ")
     submit = SubmitField("Search")
 
-# @app.route("/<query>")
-# def return_links(query):
-#     q_terms = [term.lower() for term in query.strip().split()]
-#     return jsonify(calc_docs_sorted_order(q_terms)[:20])
+
 
 
 
@@ -183,13 +181,19 @@ def home():
     form = Search_Form()
     ans = []
     q_terms = []
-    search_triggered = False  # Initialize the search_triggered variable
+    #search_triggered = False  # Initialize the search_triggered variable
 
     if form.validate_on_submit():
         query = form.search.data
         q_terms = [term.lower() for term in query.strip().split()]
         ans = calculate_sorted_order_of_documents(q_terms)[:20]
-        search_triggered = True  # Set search_triggered to True after search
+       # search_triggered = True  # Set search_triggered to True after search
+
+
+    if len(q_terms) != 0:
+        search_triggered = True
+    else:
+        search_triggered = False
 
     return render_template('index.html', form=form, results=ans, search_triggered=search_triggered)
 

@@ -1,187 +1,17 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-  <title>DSA_Search_Engine</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: fantasy;
-      background-color: rgb(225, 250, 135);
-      margin: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-        font-family: 'Arial', sans-serif;
-        font-size: 2.5rem;
-        color: #0f0f68;
-        margin: 20px 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
-    }
 
 
-    form {
-      margin-top: 30px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    form input {
-      margin-right: 10px;
-    }
-
-    input[type="submit"] {
-      padding: 4px 8px;
-      border-radius: 3px;
-      border: 1px solid #277a01c3;
-      background-color: #10d244;
-      color: white;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #b16a00;
-    }
-
-    .results {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .results-box {
-      padding: 10px;
-      border: 1px solid #5b0000;
-      margin-bottom: 10px;
-      background-color: rgb(223, 233, 231);
-      border-radius: 8px;
-      flex-basis: calc(33.33% - 20px);
-      box-sizing: border-box;
-    }
-
-    .results-box:hover {
-      box-shadow: rgba(175, 198, 188, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-      transition: box-shadow 0.1s linear;
-    }
-
-    .results a {
-      display: inline;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #0b0d25;
-      transition: color 0.3s ease;
-    }
-
-    .results a:hover {
-      color: #1b01c5;
-    }
-
-    footer {
-      font-family: 'Times New Roman', Times, serif;
-      background-color: rgb(82, 28, 28);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-    }
-
-    footer a {
-      color: #dadff0;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: #151f47;
-    }
-
-    .creator {
-      text-align: left;
-      margin: 5px 7px;
-      color: yellow;
-    }
-
-    .Footer-Links {
-      text-align: center;
-      margin: 5px auto;
-      flex-grow: 1;
-    }
-  </style>
-</head>
-<body>
-  <h1>Algo_Search_Engine</h1>
-  <div class="form">
-    <form method="POST">
-      {{ form.hidden_tag() }}
-      {{ form.search.label }}
-      {{ form.search() }}
-      {{ form.submit() }}
-    </form>
-  </div>
-
-  <!--{% if results %}
-    <div class="results">
-      {% for (result, q_heading) in results %}
-      <div class="results-box">
-        <p>{{ loop.index }}. <a href="{{ result[0] }}" target="_blank">{{ q_heading }}</a></p>
-      </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>Welcome to Code Quest!</p>
-    {% if search_triggered %}
-        <p>No results found, please try with other related word(s).</p>
-    {% endif %}
-  {% endif %} -->
-
-  <!--{% if results %}
-    <div class="results">
-        {% for (result, q_heading) in results %}
-        <div class="results-box">
-            <p>{{ loop.index }}. <a href="{{ result[0] }}" target="_blank">{{ q_heading }}</a></p>
-        </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p>Welcome to Code Quest!</p>
-    {% if search_triggered %}
-        <p>No results found, please try with other relevant words.</p>
-    {% endif %}
-{% endif %}
-
-
-  <footer>
-    <div class="creator">Created by Debasish Das</div>
-    <div class="Footer-Links">
-      <a href="https://www.linkedin.com/in/debasish-das-740752207/" target="_blank">LinkedIn</a> |
-     
-      <a href="mailto:das31debasish@gmail.com">Email</a>
-    </div>
-  </footer>
-</body>
-</html>-->
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Algo_Search_Engine</title>
+  <title>Algo Search</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: rgb(225, 250, 135);
+      background-color: #f2f2f2;
       margin: 0;
-      padding: 2rem;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -190,34 +20,39 @@
 
     h1 {
       font-size: 2.5rem;
-      color: #0f0f68;
+      color: #007bff;
       margin: 20px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .form {
+    form {
       margin-top: 30px;
       margin-bottom: 20px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
     }
 
-    .form input {
-      margin-right: 10px;
+    form input {
+      margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 70%;
     }
 
     input[type="submit"] {
-      padding: 4px 8px;
-      border-radius: 3px;
-      border: 1px solid #277a01c3;
-      background-color: #10d244;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
       color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     input[type="submit"]:hover {
-      background-color: #b16a00;
+      background-color: #0056b3;
     }
 
     .results {
@@ -228,113 +63,110 @@
     }
 
     .results-box {
-      padding: 10px;
-      border: 1px solid #5b0000;
-      margin-bottom: 10px;
-      background-color: rgb(223, 233, 231);
+      padding: 15px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      background-color: white;
       border-radius: 8px;
       flex-basis: calc(33.33% - 20px);
       box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .results-box:hover {
-      box-shadow: rgba(175, 198, 188, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-      transition: box-shadow 0.1s linear;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
     }
 
     .results a {
-      display: inline;
+      display: block;
       margin-bottom: 10px;
       text-decoration: none;
-      color: #0b0d25;
+      color: #007bff;
       transition: color 0.3s ease;
     }
 
     .results a:hover {
-      color: #1b01c5;
+      color: #0056b3;
     }
 
     footer {
-      font-family: 'Times New Roman', Times, serif;
-      background-color: rgb(82, 28, 28);
+      background-color: #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.9rem;
+      padding: 10px 20px;
       width: 100%;
-      position: fixed;
-      bottom: 0;
-      left: 0;
+      color: white;
     }
 
     footer a {
-      color: #dadff0;
+      color: #007bff;
       text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
     }
 
     footer a:hover {
-      color: #151f47;
+      color: #0056b3;
     }
 
     .creator {
       text-align: left;
-      margin: 5px 7px;
-      color: yellow;
     }
 
     .Footer-Links {
-      text-align: center;
-      margin: 5px auto;
+      text-align: right;
       flex-grow: 1;
-    }
-
-    /* New style for the welcome message */
-    .welcome-msg {
-      font-size: 1.5rem;
-      color: #0f0f68;
-      margin-bottom: 10px;
-    }
-
-    /* New style for the no results message */
-    .no-results-msg {
-      color: #e71c1c;
-      margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
-  <h1>Algo_Search</h1>
-  <div class="form">
+    
+    <h1>Algo Search</h1>
+    <div class="form">
     <form method="POST">
-      {{ form.hidden_tag() }}
-      {{ form.search.label }}
-      {{ form.search() }}
-      {{ form.submit() }}
+        {{ form.hidden_tag() }}
+        {{ form.search.label }}
+        {{ form.search() }}
+        {{ form.submit() }}
+
+
     </form>
-  </div>
+    <div/>
 
-  <!-- Display results or welcome message -->
-  {% if results %}
+    {% if results %}
+
     <div class="results">
-      {% for (result, q_heading) in results %}
-      <div class="results-box">
-        <p>{{ loop.index }}. <a href="{{ result[0] }}" target="_blank">{{ q_heading }}</a></p>
+        {% for (result, q_heading) in results %}
+        <div class="results-box">
+          <p>{{ loop.index }}. <a href="{{ result }}" target="_blank">{{ q_heading }}</a></p>
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="welcome-msg">Welcome to Code Quest!</p>
-    {% if search_triggered %}
-        <p class="no-results-msg">No results found, please try with other relevant words.</p>
+    {% else %}
+      <p>Welcome to Algo_Search 😍!</p>
+      {% if search_triggered %}
+          <p>No results found, please try with other related word(s).</p>
+      {% endif %}
     {% endif %}
-  {% endif %}
+  
+    <footer>
+      <div class="creator">Created by Debasish Das</div>
+      <div class="Footer-Links">
+        <a href="https://www.linkedin.com/in/debasish-das-740752207/" target="_blank">LinkedIn</a> |
+        <a href="mailto:das31debasish@gmail.com">Email</a>
+      </div>
+    </footer>
 
-  <footer>
-    <div class="creator">Created by Debasish Das</div>
-    <div class="Footer-Links">
-      <a href="https://www.linkedin.com/in/debasish-das-740752207/" target="_blank">LinkedIn</a> |
-      <a href="mailto:das31debasish@gmail.com">Email</a>
-    </div>
-  </footer>
 </body>
 </html>
+
+
+
+
+
+
+
